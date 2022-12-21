@@ -1,7 +1,5 @@
 package br.com.wepdev.realmeet_softblue;
 
-import static java.util.concurrent.CompletableFuture.supplyAsync;
-
 import br.com.wepdev.realmeet_softblue.api.facade.RoomsApi;
 import br.com.wepdev.realmeet_softblue.api.model.Room;
 import java.util.concurrent.CompletableFuture;
@@ -13,7 +11,6 @@ public class RoomController implements RoomsApi {
 
     @Override
     public CompletableFuture<ResponseEntity<Room>> listRooms(Long id) {
-
         return CompletableFuture.supplyAsync(() -> ResponseEntity.ok(new Room().id(1L).name("Room 1")));
     }
 }
