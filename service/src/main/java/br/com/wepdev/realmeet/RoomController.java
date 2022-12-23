@@ -1,4 +1,4 @@
-package br.com.wepdev.realmeet_softblue;
+package br.com.wepdev.realmeet;
 
 import br.com.wepdev.realmeet_softblue.api.facade.RoomsApi;
 import br.com.wepdev.realmeet_softblue.api.model.Room;

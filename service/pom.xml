@@ -140,7 +140,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>br.com.sw2you.realmeet_softblue.Application</mainClass>
+                    <mainClass>br.com.wepdev.realmeet.Application</mainClass>
                 </configuration>
             </plugin>
             <plugin>
