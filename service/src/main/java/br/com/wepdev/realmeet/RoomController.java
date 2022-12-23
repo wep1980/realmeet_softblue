@@ -1,7 +1,7 @@
 package br.com.wepdev.realmeet;
 
-import br.com.wepdev.realmeet_softblue.api.facade.RoomsApi;
-import br.com.wepdev.realmeet_softblue.api.model.Room;
+import br.com.wepdev.realmeet.api.facade.RoomsApi;
+import br.com.wepdev.realmeet.api.model.Room;
 import java.util.concurrent.CompletableFuture;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
