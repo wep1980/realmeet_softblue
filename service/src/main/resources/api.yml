@@ -2,18 +2,20 @@ openapi: '3.0.0'
 info:
   version: '1.0.0'
   title: 'realmeet_softblue'
-
+servers:
+  - url: 'http://localhost:3000'
 paths:
-  /rooms:
+  /salas/{id}:
     get:
-      summary: 'Return rooms'
-      operationId: 'listRooms'
+      summary: 'Retorna a sala por ID'
+      operationId: getSala
       tags:
-        - room
+        - sala
       parameters:
         - name: id
-          in: query
-          description: ID of the room
+          in: path
+          required: true
+          description: ID of the sala
           schema:
             type: integer
             format: int64
@@ -23,24 +25,26 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Room'
-        default:
-          description: Unexpected error
+                $ref: '#/components/schemas/SalaDTO'
+        404:
+          description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ResponseError'
 components:
   schemas:
-    Room:
+    SalaDTO:
       type: object
       properties:
         id:
           type: integer
           format: int64
-        name:
+        nome:
           type: string
-    Error:
+        lugares:
+          type: integer
+    ResponseError:
       type: object
       required:
         - code
@@ -49,6 +53,8 @@ components:
         code:
           type: integer
           format: int32
+        status:
+          type: string
         message:
           type: string
 
