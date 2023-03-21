@@ -8,6 +8,7 @@ import br.com.wepdev.realmeet.utils.TestDateCreator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.client.HttpClientErrorException;
 
 public class SalaApiIntegrationTest extends BaseIntegrationTest {
     @Autowired
@@ -34,5 +35,22 @@ public class SalaApiIntegrationTest extends BaseIntegrationTest {
         Assertions.assertEquals(sala.getId(), salaDto.getId());
         Assertions.assertEquals(sala.getNome(), salaDto.getNome());
         Assertions.assertEquals(sala.getLugares(), salaDto.getLugares());
+    }
+
+    @Test
+    public void testGetSalaInativa() {
+        var sala = TestDateCreator.newSalaBuilder().ativa(false).build();
+        salaRepository.saveAndFlush(sala);
+
+        Assertions.assertFalse(sala.getAtiva());
+        Assertions.assertThrows(HttpClientErrorException.NotFound.class, () -> salaApi.getSala(sala.getId()));
+    }
+
+    @Test
+    public void testGetSalaNaoExiste() {
+        Assertions.assertThrows(
+            HttpClientErrorException.NotFound.class,
+            () -> salaApi.getSala(TestConstants.DEFAULT_SALA_ID)
+        );
     }
 }

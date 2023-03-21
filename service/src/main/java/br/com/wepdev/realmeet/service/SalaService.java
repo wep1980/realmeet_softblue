@@ -27,7 +27,7 @@ public class SalaService {
     public SalaDTO getSala(Long id) {
         Objects.requireNonNull(id); // Verifica se o Id esta nulo antes do acesso a base de dados
         Sala sala = salaRepository
-            .findById(id)
+            .findByIdAndAtiva(id, true)
             .orElseThrow(() -> new SalaNotFoundException("Sala " + id + " não existe"));
         return salaMapper.converteSalaEmSalaDTO(sala);
         //return new SalaDTO().nome(sala.getNome()).id(sala.getId()).lugares(sala.getLugares());
