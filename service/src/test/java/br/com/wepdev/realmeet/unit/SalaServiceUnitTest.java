@@ -1,7 +1,6 @@
 package br.com.wepdev.realmeet.unit;
 
 import br.com.wepdev.realmeet.core.BaseUnitTest;
-import br.com.wepdev.realmeet.domain.entity.Sala;
 import br.com.wepdev.realmeet.domain.repository.SalaRepository;
 import br.com.wepdev.realmeet.exception.SalaNotFoundException;
 import br.com.wepdev.realmeet.service.SalaService;
@@ -12,10 +11,9 @@ import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
+
 
 class SalaServiceUnitTest extends BaseUnitTest {
     private SalaService victim;
