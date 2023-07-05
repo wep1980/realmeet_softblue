@@ -1,6 +1,7 @@
 package br.com.wepdev.realmeet.controller;
 
 import br.com.wepdev.realmeet.api.facade.SalasApi;
+import br.com.wepdev.realmeet.api.model.CriarSalaDTO;
 import br.com.wepdev.realmeet.api.model.SalaDTO;
 import br.com.wepdev.realmeet.service.SalaService;
 import br.com.wepdev.realmeet.util.ResponseEntityUtils;
@@ -24,6 +25,13 @@ public class SalaController implements SalasApi {
         //return CompletableFuture.supplyAsync(() -> ResponseEntity.ok(salaService.getSala(id)));
         return CompletableFuture
             .supplyAsync(() -> salaService.getSala(id), controllersExecutor)
-            .thenApply(r -> ResponseEntityUtils.ok(r));
+            .thenApply(ResponseEntityUtils::ok);
+    }
+
+    @Override
+    public CompletableFuture<ResponseEntity<SalaDTO>> criarSala(CriarSalaDTO criarSalaDTO) {
+        return CompletableFuture
+            .supplyAsync(() -> salaService.criarSala(criarSalaDTO), controllersExecutor)
+            .thenApply(ResponseEntityUtils::create);
     }
 }

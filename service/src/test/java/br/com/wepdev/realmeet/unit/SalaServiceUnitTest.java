@@ -7,6 +7,7 @@ import br.com.wepdev.realmeet.service.SalaService;
 import br.com.wepdev.realmeet.utils.MapperUtils;
 import br.com.wepdev.realmeet.utils.TestConstants;
 import br.com.wepdev.realmeet.utils.TestDateCreator;
+import br.com.wepdev.realmeet.validator.SalaValidator;
 import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,17 +15,19 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
-
 class SalaServiceUnitTest extends BaseUnitTest {
     private SalaService victim;
 
     @Mock
     private SalaRepository salaRepository;
 
+    @Mock
+    private SalaValidator salaValidator;
+
     @BeforeEach
     // Metodo chamado antes de cada teste
     void setupEach() {
-        victim = new SalaService(salaRepository, MapperUtils.salaMapper());
+        victim = new SalaService(salaRepository, MapperUtils.salaMapper(), salaValidator);
     }
 
     @Test

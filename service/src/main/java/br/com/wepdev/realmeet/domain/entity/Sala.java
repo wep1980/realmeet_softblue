@@ -53,12 +53,24 @@ A JPA precisa de pelo ao menos um construtor vazio
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public Integer getLugares() {
         return lugares;
+    }
+
+    public void setLugares(Integer lugares) {
+        this.lugares = lugares;
     }
 
     public Boolean getAtiva() {
